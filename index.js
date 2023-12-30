@@ -31,6 +31,13 @@ const convertGMTToUnix = (GMTValue) => {
   return new Date(GMTValue).getTime();
 };
 
+app.get("/api", (req, res) => {
+  res.json({
+    unix: parseInt(new Date() * 1000),
+    utc: new Date().toUTCString(),
+  });
+});
+
 app.get("/api/:date", (req, res) => {
   if (req.params.date.length === 13) {
     let GMT = convertUnixToGMT(req.params.date);
