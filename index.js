@@ -33,7 +33,7 @@ const convertGMTToUnix = (GMTValue) => {
 
 app.get("/api", (req, res) => {
   res.json({
-    unix: parseInt(new Date() * 1000),
+    unix: parseInt(new Date() * 1),
     utc: new Date().toUTCString(),
   });
 });
