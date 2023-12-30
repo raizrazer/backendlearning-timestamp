@@ -38,6 +38,9 @@ app.get("/api/:date", (req, res) => {
   } else {
     let unix = convertGMTToUnix(req.params.date);
     let GMT = convertUnixToGMT(unix);
+    if (GMT == "Invalid Date") {
+      return res.json({ error: GMT });
+    }
     res.json({ unix: unix, utc: GMT });
   }
 });
